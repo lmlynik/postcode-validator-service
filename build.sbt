@@ -9,4 +9,4 @@ Revolver.settings
 
 mainClass in Revolver.reStart := Some("pl.mlynik.PostcodeValidatorApplication")
 
-Revolver.reStartArgs := Seq("server", "/Users/lukaszm/Documents/code/postcode-validator/src/main/resources/config.yaml")
+Revolver.reStartArgs := Seq("server", (baseDirectory.value / "src/main/resources/config.yaml").toString)
