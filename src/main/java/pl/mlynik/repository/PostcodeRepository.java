@@ -25,9 +25,9 @@ public class PostcodeRepository {
     public List<Postcode> get(String postcode, boolean partial) {
         Query<Postcode> query = datastore.createQuery(Postcode.class).disableCursorTimeout();
         if (partial) {
-            query = query.field("postcode").startsWith(postcode);
+            query = query.field("_id").startsWith(postcode);
         } else {
-            query = query.field("postcode").equal(postcode);
+            query = query.field("_id").equal(postcode);
         }
         System.out.println(query.toString());
 
