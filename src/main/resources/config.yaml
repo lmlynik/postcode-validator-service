@@ -5,6 +5,6 @@ server:
     - type: http
       port: 9000
 
-host: localhost
+host: 185.40.9.190
 port: 27017
 db: postcodes

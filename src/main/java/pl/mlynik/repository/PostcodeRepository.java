@@ -17,16 +17,17 @@ public class PostcodeRepository {
         Morphia morphia = new Morphia();
         morphia.map(Postcode.class);
         MongoClient mongoClient = new MongoClient(host, port);
+
         datastore = morphia.createDatastore(mongoClient, db);
     }
 
 
     public List<Postcode> get(String postcode, boolean partial) {
-        Query<Postcode> query = datastore.createQuery(Postcode.class);
+        Query<Postcode> query = datastore.createQuery(Postcode.class).disableCursorTimeout();
         if (partial) {
-            query = query.field("postcodeCleaned").startsWith(postcode);
+            query = query.field("postcode").startsWith(postcode);
         } else {
-            query = query.field("postcodeCleaned").equal(postcode);
+            query = query.field("postcode").equal(postcode);
         }
         System.out.println(query.toString());
 
